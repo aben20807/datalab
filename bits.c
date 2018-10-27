@@ -1121,7 +1121,9 @@ int signMag2TwosComp(int x)
  */
 int specialBits(void)
 {
-    return 42;
+    // 0xffca3fff = 0b11111111110010100011111111111111
+    // 0xd7 << 14 = 0b00000000001101011100000000000000
+    return ~(0xd7 << 14);
 }
 
 /*
