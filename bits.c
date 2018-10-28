@@ -274,7 +274,9 @@ int bitMask(int highbit, int lowbit)
  */
 int bitMatch(int x, int y)
 {
-    return 42;
+    // ~(x ^ y)
+    // (x & y) | (~x & ~y)
+    return ~(~(x & y) & ~(~x & ~y));
 }
 
 /*
