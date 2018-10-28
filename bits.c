@@ -111,8 +111,9 @@ NOTES:
  */
 int absVal(int x)
 {
-    int y = x >> 30 >> 1;
-    return (x ^ y) + (y & 1);
+    unsigned sig = x;
+    sig = sig >> 31;
+    return (x ^ (~0 + !sig)) + sig;
 }
 
 /*
