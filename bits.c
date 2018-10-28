@@ -288,7 +288,7 @@ int bitMatch(int x, int y)
  */
 int bitNor(int x, int y)
 {
-    return ~~(~x & ~y);
+    return ~x & ~y;
 }
 
 /*
