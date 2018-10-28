@@ -342,7 +342,8 @@ int bitReverse(int x)
  */
 int bitXor(int x, int y)
 {
-    return 42;
+    // ~((x & y) | (~x & ~y))
+    return ~(x & y) & ~(~x & ~y);
 }
 
 /*
