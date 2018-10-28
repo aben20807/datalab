@@ -259,8 +259,8 @@ int bitMask(int highbit, int lowbit)
     //    0b111...111111000 l_mask for lowbit
     // &) 0b000...000111000 bitMask(5, 3)
 
-    unsigned h_mask = ~((~0 << highbit) << 1);
-    unsigned l_mask = ~0 << lowbit;
+    int h_mask = ~((~0 << highbit) << 1);
+    int l_mask = ~0 << lowbit;
     return h_mask & l_mask;
 }
 
