@@ -465,7 +465,9 @@ int ezThreeFourths(int x)
  */
 int fitsBits(int x, int n)
 {
-    return 42;
+    x = x >> (n + ~0);
+    // return !(x ^ 0) | !(x ^ ~0);
+    return !(x) | !(x + 1);
 }
 
 /*
