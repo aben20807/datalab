@@ -145,11 +145,9 @@ int addOK(int x, int y)
  */
 int allEvenBits(int x)
 {
-    x = x & (x >> 16);
-    x = x & (x >> 8);
-    x = x & (x >> 4);
-    x = x & (x >> 2);
-    return x & 0x1;
+    int mask = 0x55 | (0x55 << 8);
+    mask = mask | (mask << 16);
+    return !((x & mask) ^ mask);
 }
 
 /*
@@ -162,12 +160,9 @@ int allEvenBits(int x)
  */
 int allOddBits(int x)
 {
-    x = x >> 1;
-    x = x & (x >> 16);
-    x = x & (x >> 8);
-    x = x & (x >> 4);
-    x = x & (x >> 2);
-    return x & 0x1;
+    int mask = 0xaa | (0xaa << 8);
+    mask = mask | (mask << 16);
+    return !((x & mask) ^ mask);
 }
 
 /*
@@ -180,11 +175,9 @@ int allOddBits(int x)
  */
 int anyEvenBit(int x)
 {
-    x = x | (x >> 16);
-    x = x | (x >> 8);
-    x = x | (x >> 4);
-    x = x | (x >> 2);
-    return x & 0x1;
+    int mask = 0x55 | (0x55 << 8);
+    mask = mask | (mask << 16);
+    return !!(x & mask);
 }
 
 /*
@@ -197,12 +190,9 @@ int anyEvenBit(int x)
  */
 int anyOddBit(int x)
 {
-    x = x >> 1;
-    x = x | (x >> 16);
-    x = x | (x >> 8);
-    x = x | (x >> 4);
-    x = x | (x >> 2);
-    return x & 0x1;
+    int mask = 0xaa | (0xaa << 8);
+    mask = mask | (mask << 16);
+    return !!(x & mask);
 }
 
 /*
