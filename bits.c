@@ -858,7 +858,9 @@ int isNonNegative(int x)
  */
 int isNonZero(int x)
 {
-    return 42;
+    unsigned u1 = x;
+    unsigned u2 = ~x + 1;
+    return ((u1 >> 31) | (u2 >> 31));
 }
 
 /*
