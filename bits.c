@@ -896,7 +896,9 @@ int isPallindrome(int x)
  */
 int isPositive(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    return (!!x) & (!sig);
 }
 
 /*
