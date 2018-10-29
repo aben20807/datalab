@@ -741,7 +741,11 @@ int intLog2(int x)
  */
 int isAsciiDigit(int x)
 {
-    return 42;
+    unsigned ge0 = x;
+    ge0 = !((ge0 + ~0x30 + 1) >> 31);
+    unsigned le9 = x;
+    le9 = !((~le9 + 1 + 0x39) >> 31);
+    return ge0 & le9;
 }
 
 /*
