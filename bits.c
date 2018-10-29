@@ -829,7 +829,9 @@ int isLessOrEqual(int x, int y)
  */
 int isNegative(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    return sig;
 }
 
 /*
@@ -841,7 +843,9 @@ int isNegative(int x)
  */
 int isNonNegative(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    return !sig;
 }
 
 /*
