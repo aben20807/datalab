@@ -789,7 +789,15 @@ int isGreater(int x, int y)
  */
 int isLess(int x, int y)
 {
-    return 42;
+    unsigned sig_x = x;
+    sig_x = sig_x >> 31;
+    unsigned sig_y = y;
+    sig_y = sig_y >> 31;
+    int xnyp = (!sig_y) & sig_x;
+
+    unsigned sig_z = y + ~x;  // y - x - 1
+    sig_z = sig_z >> 31;
+    return (xnyp | ((!(sig_x ^ sig_y)) & (!sig_z)));
 }
 
 /*
