@@ -1044,7 +1044,8 @@ int logicalNeg(int x)
  */
 int logicalShift(int x, int n)
 {
-    return 42;
+    int mask = ~(~0 << (32 + ~n) << 1);
+    return (x >> n) & mask;
 }
 
 /*
