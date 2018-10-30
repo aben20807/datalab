@@ -382,7 +382,28 @@ int conditional(int x, int y, int z)
  */
 int countLeadingZero(int x)
 {
-    return 42;
+    int allf = ~0;
+    int mask_len = 16;
+    int mask = allf << mask_len;
+    int f1 = !(x & mask);
+
+    mask_len = mask_len + ((8 ^ (allf + !f1)) + f1);
+    mask = allf << mask_len;
+    int f2 = !(x & mask);
+
+    mask_len = mask_len + ((4 ^ (allf + !f2)) + f2);
+    mask = allf << mask_len;
+    int f3 = !(x & mask);
+
+    mask_len = mask_len + ((2 ^ (allf + !f3)) + f3);
+    mask = allf << mask_len;
+    int f4 = !(x & mask);
+
+    mask_len = mask_len + ((1 ^ (allf + !f4)) + f4);
+    mask = allf << mask_len;
+    int f5 = !(x & mask);
+
+    return 32 + (~mask_len) + f5 + !x;
 }
 
 /*
