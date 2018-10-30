@@ -923,9 +923,7 @@ int isPower2(int x)
  */
 int isTmax(int x)
 {
-    unsigned tmax = 0x1;
-    tmax = ~(tmax << 31);
-    return !(x ^ tmax);
+    return !(x ^ ~(x + 0x1)) & !!~x;
 }
 
 /*
@@ -937,9 +935,7 @@ int isTmax(int x)
  */
 int isTmin(int x)
 {
-    unsigned tmin = 0x1;
-    tmin = tmin << 31;
-    return !(x ^ tmin);
+    return !(x ^ ~(x + ~0)) & !!x;
 }
 
 /*
