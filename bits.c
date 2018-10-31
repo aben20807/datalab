@@ -1251,7 +1251,9 @@ int satMul3(int x)
  */
 int sign(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    return !!x + ~(sig << 1) + 1;
 }
 
 /*
