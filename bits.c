@@ -1313,7 +1313,8 @@ int subtractionOK(int x, int y)
  */
 int thirdBits(void)
 {
-    return 42;
+    int x = (0x92 << 8) | 0x49;
+    return x << 15 | x;
 }
 
 /*
