@@ -1325,7 +1325,7 @@ int thirdBits(void)
  */
 int tmax(void)
 {
-    return 42;
+    return ~(1u << 31);
 }
 
 /*
@@ -1336,7 +1336,7 @@ int tmax(void)
  */
 int tmin(void)
 {
-    return 42;
+    return 1u << 31;
 }
 
 /*
