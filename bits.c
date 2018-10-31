@@ -1396,5 +1396,6 @@ int twosComp2SignMag(int x)
  */
 int upperBits(int n)
 {
-    return 42;
+    int is_zero_mask = ~0 + !n;
+    return (~0 << (33 + ~n)) & is_zero_mask;
 }
