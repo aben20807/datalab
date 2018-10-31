@@ -1266,7 +1266,10 @@ int sign(int x)
  */
 int signMag2TwosComp(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    int mask = ~(1u << 31);
+    return ((x & mask) ^ (~0 + !sig)) + sig;
 }
 
 /*
