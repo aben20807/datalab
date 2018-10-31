@@ -1056,7 +1056,17 @@ int logicalShift(int x, int n)
  */
 int maximumOfTwo(int x, int y)
 {
-    return 42;
+    unsigned sig_x = x;
+    sig_x = sig_x >> 31;
+    unsigned sig_y = y;
+    sig_y = sig_y >> 31;
+    int xpyn = (!sig_x) & sig_y;
+
+    unsigned sig_z = x + ~y;  // x - y - 1
+    sig_z = sig_z >> 31;
+
+    int xgty_mask = ~0 + !(xpyn | ((!(sig_x ^ sig_y)) & (!sig_z)));
+    return (xgty_mask & x) + (~xgty_mask & y);
 }
 
 /*
@@ -1067,7 +1077,17 @@ int maximumOfTwo(int x, int y)
  */
 int minimumOfTwo(int x, int y)
 {
-    return 42;
+    unsigned sig_x = x;
+    sig_x = sig_x >> 31;
+    unsigned sig_y = y;
+    sig_y = sig_y >> 31;
+    int xnyp = (!sig_y) & sig_x;
+
+    unsigned sig_z = y + ~x;  // y - x - 1
+    sig_z = sig_z >> 31;
+
+    int xlty_mask = ~0 + !(xnyp | ((!(sig_x ^ sig_y)) & (!sig_z)));
+    return (xlty_mask & x) + (~xlty_mask & y);
 }
 
 /*
