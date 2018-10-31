@@ -1380,7 +1380,10 @@ int trueThreeFourths(int x)
  */
 int twosComp2SignMag(int x)
 {
-    return 42;
+    unsigned sig = x;
+    sig = sig >> 31;
+    int sig_mask = sig << 31;
+    return ((x ^ (~0 + !sig)) + sig) ^ sig_mask;
 }
 
 /*
