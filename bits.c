@@ -1295,7 +1295,13 @@ int specialBits(void)
  */
 int subtractionOK(int x, int y)
 {
-    return 42;
+    unsigned x_sig = x;
+    x_sig = x_sig >> 31;
+    unsigned y_sig = y;
+    y_sig = y_sig >> 31;
+    unsigned z_sig = x + ~y + 1;
+    z_sig = z_sig >> 31;
+    return !((x_sig & !y_sig & !z_sig) | ((!x_sig) & y_sig & z_sig));
 }
 
 /*
